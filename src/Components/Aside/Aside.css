@@ -1,0 +1,31 @@
+.Aside {
+    height: 100%;
+    width: 57px;
+    position: fixed;
+    background-color: #fff;
+}
+.Aside__logo{
+    padding: 30px 0 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Aside__logo__icon{
+    width:40px;
+}
+.Aside__nav{
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+}
+.Aside__nav__profile{
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background-image: linear-gradient(147deg,#61d5df -3%,#61d5df 101%);
+    padding: 1px;
+}
+.Aside__nav__icon{
+    margin: 5px 0 5px 0;
+    width: 35px;
+}

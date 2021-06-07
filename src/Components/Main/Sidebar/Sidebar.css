@@ -1,0 +1,28 @@
+.Sidebar{
+    margin-left: 57px;
+    height: 100%;
+    width: 257px;
+    position: fixed;
+    background-color: #ECEDF5;
+}
+.Sidebar__tab{
+    display: flex;
+    flex-flow: row wrap;
+    color: white;
+    height: 52px;
+    width: calc(100% - 30px);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 0 15px;
+    font-size: 15px;
+}
+.Sidebar__arrow-icon{
+    width: 10px;
+    height: 10px;
+}
+.Sidebar__niche{
+    background-color: #5d6b9f;
+}
+.Sidebar__category{
+    background-color: #9da9d5;
+}

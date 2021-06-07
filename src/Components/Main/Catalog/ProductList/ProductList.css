@@ -1,0 +1,6 @@
+.ProductListBody{
+    margin-left: 314px;
+    height: calc(100% - 120px);
+    width: calc(100% - 314px);
+    background-color: darkblue;
+}
