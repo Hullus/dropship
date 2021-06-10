@@ -1,16 +1,35 @@
 import './Header.css';
 
 
-function Header () {
+function Header ({selectedProducts, handleInput, searchInput, selectAll, clearAll}) {
+
+
+
     return (
         <header className="Header">
             <div className={"Header__nav"}>
               <div className={"Nav__count"}>
-                  <button className={"Nav__button Blue__button"}>SELECT ALL</button>
-                  <span className={"Nav__count"}>selected 0 out of 20 products</span>
+                  <button
+                      className={"Nav__button Blue__button"}
+                      onClick={() => selectAll()}
+                  >
+                      SELECT ALL
+                  </button>
+
+                  <span className={"Nav__count"}>selected {selectedProducts.length} out of 20 products</span>
+                  {selectedProducts.length > 0 && < button
+                      className={"Nav__button Blue__button"}
+                      onClick={clearAll}
+                  >CLEAR SELECTED</button>}
               </div>
               <div className={"Nav__search"}>
-                  <input className={"Search__input"} type="text"/>
+                  <input
+                      className={"Search__input"}
+                      type="text"
+                      placeholder={"Search..."}
+                      onChange={(e) => handleInput(e)}
+                      value={searchInput}
+                  />
                   <button className={"Nav__button Blue__button"}>ADD TO INVENTORY</button>
               </div>
             </div>

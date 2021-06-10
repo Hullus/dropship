@@ -1,0 +1,18 @@
+.Sort{
+    position: fixed;
+    margin-top: 75px;
+    margin-left: 314px;
+    height: 45px;
+    width: calc(100% - 314px);
+    background-color: #fff;
+    border-bottom: 1px solid #dbe0f3;
+    z-index: 10;
+}
+.Sort__select{
+    margin-top: 13px;
+    margin-left: 40px;
+    border: none;
+    background-color: transparent;
+    color: #B6B9CA;
+    font-size: 12px;
+}

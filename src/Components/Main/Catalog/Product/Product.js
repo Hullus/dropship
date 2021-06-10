@@ -1,11 +1,20 @@
 import './Product.css';
 import {useState} from "react";
 
-function Product({id, image, title, price, description}) {
+function Product({id, image, title, price, description, selected, handleSelect, selectedProducts }) {
 
 
     return (
-        <div className="Product">
+        <div className={`Product ${selectedProducts.includes(id) ? "Product__hover--active" : ""}`}>
+            <div className={`Product__hover ${selectedProducts.includes(id) ? "Product__hover--active" : ""}`}>
+                <input
+                    type={"checkbox"}
+                    className={"Product__checkbox"}
+                    onChange={() => handleSelect(id)}
+                    value={selected}
+                />
+                <button>Add to Inventory</button>
+            </div>
             <div className={"Product__profile"}>
                 <img src={image} className={"Product__image"} alt="Product image"/>
             </div>
@@ -17,9 +26,7 @@ function Product({id, image, title, price, description}) {
             </div>
             <div className={"Product__prices"}>
                 <ul className={"Prices__list"}>
-                    <li>$ ${price}RRP</li>
-                    <li>$69 COST</li>
-                    <li>$420%{69} PROFIT</li>
+                    <li>${price}RRP</li>
                 </ul>
             </div>
         </div>

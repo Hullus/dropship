@@ -1,11 +1,12 @@
 .Product{
-    width: 350px;
+    flex: 1 350px;
+    max-width: 500px;
     height: 450px;
-    margin-top: 15px;
+    margin: 15px;
     border: 1px solid rgba(112,112,112,.12);
     border-radius: 8px;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     align-items: center;
 }
 .Prices__list{
@@ -39,4 +40,50 @@
     align-self: flex-start;
     color: #616161;
     padding-left: 10px;
+}
+.Product__hover > button {
+    visibility: hidden;
+}
+.Product__checkbox{
+    visibility: hidden;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1.2px solid rgba(112,112,112,.12);
+    background-color: #fff;
+    top: 13px;
+    left: 20px;
+}
+.Product__hover > button{
+    position: relative;
+    left: calc(100% - 190px);
+    top: 13px;
+    width: 154px;
+    height: 38px;
+    border-radius: 4px;
+    background-color: #61d5df;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+.Product:hover {
+    border-color: #61d5df;
+}
+.Product:hover .Product__hover > button{
+    visibility: unset;
+}
+.Product:hover .Product__hover > .Product__checkbox{
+    visibility: unset;
+}
+.Product__hover--active > button  {
+    visibility: visible;
+}
+.Product__hover--active > .Product__checkbox {
+    visibility: visible;
+}
+.Product__hover--active{
+    border-color: #61d5df;
 }

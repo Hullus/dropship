@@ -1,4 +1,7 @@
-function Sort({ Products, setProducts }) {
+import "./Sort.css"
+
+
+function Sort({ Products, setProducts, allProducts }) {
     const fillCatalog = (e) => {
         const sort = e.target.value;
         const newProducts = [...Products];
@@ -20,13 +23,13 @@ function Sort({ Products, setProducts }) {
     };
 
     return (
-        <div className="sort-section">
-            <select id="sort" onChange={fillCatalog}>
+        <div className="Sort">
+            <select id="sort" className={"Sort__select"} onChange={fillCatalog}>
                 <option value="def">Sort By: New Arrivals</option>
                 <option value="asc">Price: High To Low</option>
                 <option value="desc">Price: Low To High</option>
-                <option value="alphabeticalAscending">Alph: high To Low</option>
-                <option value="alphabeticalDescending">Alph: Low To Low</option>
+                <option value="alphabeticalAscending">Alph: A to Z</option>
+                <option value="alphabeticalDescending">Alph: Z to A</option>
             </select>
         </div>
     );
