@@ -1,7 +1,7 @@
 import './Product.css';
 import {useState} from "react";
 
-function Product({id, image, title, price, description, selected, handleSelect, selectedProducts }) {
+function Product({id, image, title, price, description, selected, handleSelect, selectedProducts, checked, handleClick}) {
 
 
     return (
@@ -12,11 +12,17 @@ function Product({id, image, title, price, description, selected, handleSelect, 
                     className={"Product__checkbox"}
                     onChange={() => handleSelect(id)}
                     value={selected}
+                    checked={checked}
                 />
                 <button>Add to Inventory</button>
             </div>
             <div className={"Product__profile"}>
-                <img src={image} className={"Product__image"} alt="Product image"/>
+                <img
+                    src={image}
+                    className={"Product__image"}
+                    alt="Product image"
+                    onClick={handleClick}
+                />
             </div>
             <div className={"Product__name"}>
                 <p>{title}</p>

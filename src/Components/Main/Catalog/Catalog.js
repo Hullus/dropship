@@ -3,40 +3,20 @@ import './Catalog.css';
 
 import {useEffect, useState} from "react";
 import {getProducts} from "./DataRetriver";
+
 import Product from "./Product/Product";
 import Header from "./Header/Header";
 import Sort from "../Util/Sort";
 
 
-function Catalog () {
+function Catalog ({handleClick}) {
 
     const [allProducts, setAllProducts] = useState([]);
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] =useState([]);
     const [searchInput, setSearchInput] = useState("");
 
-    const handleInput = (e) => {
-        setSearchInput(e.target.value)
-    }
-
-    const handleSelect = (id) => {
-
-        if (selectedProducts.includes(id)){
-            const newSelect = selectedProducts.filter(selected => selected !== id)
-            setSelectedProducts(newSelect)
-        } else {
-            setSelectedProducts([...selectedProducts, id]);
-        }
-    }
-    console.log(selectedProducts)
-    const selectAll = () => {
-        setSelectedProducts(products.map(selected => selected.id))
-    }
-
-    const clearAll = () => {
-        setSelectedProducts([]);
-    }
-
+    //fetching data
     useEffect(() => {
         getProducts().then((response) => {
             const data = response.map(item=>({
@@ -46,13 +26,38 @@ function Catalog () {
             setProducts(data);
         });
     }, []);
+    //Select items
+    const handleSelect = (id) => {
+        if (selectedProducts.includes(id)){
+            const newSelect = selectedProducts.filter(selected => selected !== id)
+            setSelectedProducts(newSelect)
+        } else {
+            setSelectedProducts([...selectedProducts, id]);
+        }
+    }
+    const selectAll = () => {
+        setSelectedProducts(products.map(selected => selected.id));
+        products.map(item => item.checked = true)
+    }
+    const clearAll = () => {
+        setSelectedProducts([]);
+        products.map(item => item.checked = null)
+    }
+    //Search
+    const handleInput = (e) => {
+        setSearchInput(e.target.value)
 
+    }
     useEffect(() => {
         setTimeout(() => {
             const data = [...allProducts];
             const newProducts = data.filter(data => data.title.toLowerCase().includes(searchInput))
             setProducts(newProducts)}, 500)
     }, [searchInput])
+    //Modal open
+
+
+
 
 
 
@@ -78,8 +83,10 @@ function Catalog () {
                         title={item.title}
                         price={item.price}
                         selected={item.selected}
+                        checked={item.checked}
                         handleSelect={handleSelect}
                         selectedProducts={selectedProducts}
+                        handleClick = {handleClick}
                     />
                 ))}
             </div>
