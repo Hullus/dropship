@@ -54,12 +54,6 @@ function Catalog ({handleClick}) {
             const newProducts = data.filter(data => data.title.toLowerCase().includes(searchInput))
             setProducts(newProducts)}, 500)
     }, [searchInput])
-    //Modal open
-
-
-
-
-
 
     return (
         <div>

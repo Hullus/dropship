@@ -2,22 +2,36 @@ import './Main.css';
 
 import Catalog from "./Catalog/Catalog";
 import Sidebar from "./Sidebar/Sidebar";
-import Modal from "./Modal/Modal";
+import Product from "./Catalog/Product/Product";
+import {Modal} from "@material-ui/core";
 
-import {useState,useEffect} from "react";
-import {getProducts} from "./Catalog/DataRetriver";
+import {useState} from "react";
+import ModalBody from "./Modal/ModalBody";
 
 function Main () {
-    const handleClick = () => {
 
+    const [open, setOpen] = useState(false);
+
+
+    const handleClick = () => {
+        setOpen(true)
+    }
+    const handleClose = () => {
+        setOpen(false)
     }
 
     return (
         <div className="Main">
-            {/*<Modal />*/}
+            <Modal
+                open = {open}
+                onClose = {handleClose}
+                className={"Modal"}
+            >
+                <ModalBody />
+            </Modal>
             <Sidebar />
             <Catalog
-                handleClick={ handleClick()}
+                handleClick={handleClick}
             />
         </div>
     );

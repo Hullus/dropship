@@ -1,0 +1,9 @@
+.Modal__body{
+    height: 600px;
+    width: 1000px;
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    opacity: unset;
+    z-index: 20;
+}
