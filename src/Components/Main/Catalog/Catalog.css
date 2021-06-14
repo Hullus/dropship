@@ -1,6 +1,3 @@
 .Catalog{
     padding: 120px 0 0 314px;
-    display: flex;
-    flex-flow: wrap;
-    justify-content: space-around;
 }

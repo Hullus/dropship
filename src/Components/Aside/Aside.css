@@ -6,9 +6,11 @@
 }
 .Aside__logo{
     padding: 30px 0 30px 0;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px solid #dde3ee;
 }
 .Aside__logo__icon{
     width:40px;
@@ -24,8 +26,15 @@
     border: 2px solid #fff;
     background-image: linear-gradient(147deg,#61d5df -3%,#61d5df 101%);
     padding: 1px;
+    margin: 10px 0 10px 0;
+    height: 30px;
+    width: 30px;
 }
 .Aside__nav__icon{
-    margin: 5px 0 5px 0;
-    width: 35px;
+    margin: 15px 0 15px 0;
+    height: 22px;
+    width: 20px;
+}
+.Aside__nav__icon:hover{
+    fill: #61d5df;
 }

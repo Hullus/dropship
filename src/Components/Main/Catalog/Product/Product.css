@@ -1,13 +1,12 @@
 .Product{
-    flex: 1 350px;
-    max-width: 500px;
-    height: 450px;
-    margin: 15px;
+    margin: 8px;
     border: 1px solid rgba(112,112,112,.12);
     border-radius: 8px;
     display: flex;
     flex-flow: column;
     align-items: center;
+    height: 375px;
+    background-color: #ffffff;
 }
 .Prices__list{
     list-style: none;
@@ -21,8 +20,9 @@
     font-weight: 500;
 }
 .Product__image{
-    width: 300px;
-    height: 250px;
+    width: calc(100% - 20px);
+    margin: 0 10px 0 10px;
+    height: 200px;
     object-fit: scale-down;
     cursor: pointer;
 }
@@ -32,9 +32,16 @@
     padding: 10px;
     font-weight: 600;
     color: #3b3b3b;
-    margin: 0;
+    height: 30px;
+}
+.Product__name__text{
     overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 1rem;
+    max-height: 2rem;
 }
 .Product__supplier{
     max-width: 200px;

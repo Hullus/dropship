@@ -1,11 +1,17 @@
 import './Product.css';
 import {useState} from "react";
+import {Grid} from "@material-ui/core";
+
 
 function Product({id, image, title, price, description, selected, handleSelect, selectedProducts, checked, handleClick}) {
 
 
     return (
-        <div className={`Product ${selectedProducts.includes(id) ? "Product__hover--active" : ""}`}>
+        <Grid
+            item
+            md={4} lg={3} xl={2}>
+        <div
+            className={`Product ${selectedProducts.includes(id) ? "Product__hover--active" : ""}`}>
             <div className={`Product__hover ${selectedProducts.includes(id) ? "Product__hover--active" : ""}`}>
                 <input
                     type={"checkbox"}
@@ -21,11 +27,11 @@ function Product({id, image, title, price, description, selected, handleSelect, 
                     src={image}
                     className={"Product__image"}
                     alt="Product image"
-                    onClick={handleClick}
+                    onClick={() => handleClick(id)}
                 />
             </div>
             <div className={"Product__name"}>
-                <p>{title}</p>
+                <p className={"Product__name__text"}>{title}</p>
             </div>
             <div className={"Product__supplier"}>
                 <p>By: dropShip industries</p>
@@ -36,6 +42,7 @@ function Product({id, image, title, price, description, selected, handleSelect, 
                 </ul>
             </div>
         </div>
+        </Grid>
     );
 }
 

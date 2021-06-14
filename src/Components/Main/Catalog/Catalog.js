@@ -7,14 +7,17 @@ import {getProducts} from "./DataRetriver";
 import Product from "./Product/Product";
 import Header from "./Header/Header";
 import Sort from "../Util/Sort";
+import ModalBody from "../Modal/ModalBody";
+import {Grid, Modal} from "@material-ui/core";
 
 
-function Catalog ({handleClick}) {
+function Catalog () {
 
     const [allProducts, setAllProducts] = useState([]);
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] =useState([]);
     const [searchInput, setSearchInput] = useState("");
+    const [modalItem, setModalItem] = useState({})
 
     //fetching data
     useEffect(() => {
@@ -33,6 +36,7 @@ function Catalog ({handleClick}) {
             setSelectedProducts(newSelect)
         } else {
             setSelectedProducts([...selectedProducts, id]);
+
         }
     }
     const selectAll = () => {
@@ -55,6 +59,18 @@ function Catalog ({handleClick}) {
             setProducts(newProducts)}, 500)
     }, [searchInput])
 
+    //modal
+    const [open, setOpen] = useState(false);
+
+    const handleClick = (id) => {
+        setOpen(true)
+        const selectedItem = allProducts.filter(item => item.id === id);
+        setModalItem(...selectedItem)
+    }
+    const handleClose = () => {
+        setOpen(false)
+    }
+
     return (
         <div>
             <Header
@@ -68,7 +84,26 @@ function Catalog ({handleClick}) {
             Products={products}
             setProducts={setProducts}
             />
-            <div className="Catalog">
+
+            <Modal
+                open = {open}
+                onClose = {handleClose}
+                className={"Modal"}
+            >
+                <ModalBody
+                    image = {modalItem.image}
+                    title = {modalItem.title}
+                    description = {modalItem.description}
+                    id = {modalItem.id}
+                    price = {modalItem.price}
+                    handleClose = {handleClose}
+                />
+            </Modal>
+
+            <Grid
+                container
+                spacing={0}
+                className="Catalog">
                 {products?.map((item) => (
                     <Product
                         id={item.id}
@@ -83,7 +118,7 @@ function Catalog ({handleClick}) {
                         handleClick = {handleClick}
                     />
                 ))}
-            </div>
+            </Grid>
         </div>
     );
 }
