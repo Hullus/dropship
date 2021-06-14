@@ -9,6 +9,7 @@ import Header from "./Header/Header";
 import Sort from "../Util/Sort";
 import ModalBody from "../Modal/ModalBody";
 import {Grid, Modal} from "@material-ui/core";
+import axios from "axios";
 
 
 function Catalog () {
@@ -17,7 +18,10 @@ function Catalog () {
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] =useState([]);
     const [searchInput, setSearchInput] = useState("");
-    const [modalItem, setModalItem] = useState({})
+    const [modalItem, setModalItem] = useState([]);
+    const [modalID, setModalID] = useState([]);
+
+
 
     //fetching data
     useEffect(() => {
@@ -62,10 +66,20 @@ function Catalog () {
     //modal
     const [open, setOpen] = useState(false);
 
+    useEffect(() => {
+        axios.get(`https://fakestoreapi.com/products/${modalID}`)
+            .then(res => {
+                setModalItem(res.data);
+                setOpen(true)
+            })
+    }, [modalID])
+
+
     const handleClick = (id) => {
-        setOpen(true)
-        const selectedItem = allProducts.filter(item => item.id === id);
-        setModalItem(...selectedItem)
+        // setOpen(true)
+        // const selectedItem = allProducts.filter(item => item.id === id);
+        // setModalItem(...selectedItem)
+        setModalID(id);
     }
     const handleClose = () => {
         setOpen(false)
