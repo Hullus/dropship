@@ -39,6 +39,8 @@ function Product({id, image, title, price, description, selected, handleSelect, 
             <div className={"Product__prices"}>
                 <ul className={"Prices__list"}>
                     <li>${price}RRP</li>
+                    <li>25%</li>
+                    <li>34%</li>
                 </ul>
             </div>
         </div>

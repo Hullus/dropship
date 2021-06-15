@@ -8,11 +8,15 @@
     height: 375px;
     background-color: #ffffff;
 }
+.Product__prices{
+    border-top: 1px solid rgba(104, 104, 104, 0.5);
+    margin-top: 5px;
+    width: 100%;
+}
 .Prices__list{
     list-style: none;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
 }
 .Prices__list li{
     padding: 10px;

@@ -7,9 +7,9 @@ import {getProducts} from "./DataRetriver";
 import Product from "./Product/Product";
 import Header from "./Header/Header";
 import Sort from "../Util/Sort";
-import ModalBody from "../Modal/ModalBody";
-import {Grid, Modal} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 import axios from "axios";
+import ModalMain from "../Modal/Modal";
 
 
 function Catalog () {
@@ -18,8 +18,7 @@ function Catalog () {
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] =useState([]);
     const [searchInput, setSearchInput] = useState("");
-    const [modalItem, setModalItem] = useState([]);
-    const [modalID, setModalID] = useState([]);
+    const [modalID, setModalID] = useState();
 
 
 
@@ -27,6 +26,7 @@ function Catalog () {
     useEffect(() => {
         getProducts().then((response) => {
             const data = response.map(item=>({
+                checked : false,
                 ...item,
             }))
             setAllProducts(data);
@@ -64,26 +64,10 @@ function Catalog () {
     }, [searchInput])
 
     //modal
-    const [open, setOpen] = useState(false);
-
-    useEffect(() => {
-        axios.get(`https://fakestoreapi.com/products/${modalID}`)
-            .then(res => {
-                setModalItem(res.data);
-                setOpen(true)
-            })
-    }, [modalID])
-
-
     const handleClick = (id) => {
-        // setOpen(true)
-        // const selectedItem = allProducts.filter(item => item.id === id);
-        // setModalItem(...selectedItem)
         setModalID(id);
     }
-    const handleClose = () => {
-        setOpen(false)
-    }
+
 
     return (
         <div>
@@ -99,24 +83,14 @@ function Catalog () {
             setProducts={setProducts}
             />
 
-            <Modal
-                open = {open}
-                onClose = {handleClose}
+            <ModalMain
+                open = {handleClick}
+                modalID={modalID}
                 className={"Modal"}
-            >
-                <ModalBody
-                    image = {modalItem.image}
-                    title = {modalItem.title}
-                    description = {modalItem.description}
-                    id = {modalItem.id}
-                    price = {modalItem.price}
-                    handleClose = {handleClose}
-                />
-            </Modal>
+            />
 
             <Grid
                 container
-                spacing={0}
                 className="Catalog">
                 {products?.map((item) => (
                     <Product
