@@ -11,8 +11,11 @@ function Main () {
 
     return (
         <div className="Main">
-            <Sidebar />
+            <Sidebar
+            className = "Sidebar"
+            />
             <Catalog
+            className = "Catalog"
             />
         </div>
     );

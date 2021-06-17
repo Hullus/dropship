@@ -7,8 +7,7 @@ import {getProducts} from "./DataRetriver";
 import Product from "./Product/Product";
 import Header from "./Header/Header";
 import Sort from "../Util/Sort";
-import {Grid} from "@material-ui/core";
-import axios from "axios";
+import {CircularProgress, Grid} from "@material-ui/core";
 import ModalMain from "../Modal/Modal";
 
 
@@ -40,7 +39,6 @@ function Catalog () {
             setSelectedProducts(newSelect)
         } else {
             setSelectedProducts([...selectedProducts, id]);
-
         }
     }
     const selectAll = () => {
@@ -88,25 +86,37 @@ function Catalog () {
                 modalID={modalID}
                 className={"Modal"}
             />
+            {
+                products.length ?
+                    <Grid
+                        container
+                        className="Catalog">
+                        {products?.map((item) => (
+                            <Product
+                                id={item.id}
+                                key={item.id}
+                                image={item.image}
+                                title={item.title}
+                                price={item.price}
+                                selected={item.selected}
+                                checked={item.checked}
+                                handleSelect={handleSelect}
+                                selectedProducts={selectedProducts}
+                                handleClick = {handleClick}
+                            />
+                        ))}
+                    </Grid>
 
-            <Grid
-                container
-                className="Catalog">
-                {products?.map((item) => (
-                    <Product
-                        id={item.id}
-                        key={item.id}
-                        image={item.image}
-                        title={item.title}
-                        price={item.price}
-                        selected={item.selected}
-                        checked={item.checked}
-                        handleSelect={handleSelect}
-                        selectedProducts={selectedProducts}
-                        handleClick = {handleClick}
-                    />
-                ))}
-            </Grid>
+                    :
+
+                    <div className={"Progress__bar--wrapper"}>
+                        <CircularProgress
+                            className={"Progress_bar"}
+                            size={55}
+                            thickness={3}
+                        />
+                    </div>
+            }
         </div>
     );
 }

@@ -1,3 +1,15 @@
 .Catalog{
     padding: 120px 0 0 314px;
 }
+.Progress__bar--wrapper{
+    padding-left: 314px;
+    padding-top: 50px;
+    width: calc(100% - 314px);
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Progress__bar{
+    color: #5D6B9F
+}
