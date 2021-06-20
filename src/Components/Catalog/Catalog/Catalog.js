@@ -11,21 +11,20 @@ import {CircularProgress, Grid} from "@material-ui/core";
 import ModalMain from "../Modal/Modal";
 
 
-function Catalog () {
+function Catalog() {
 
     const [allProducts, setAllProducts] = useState([]);
     const [products, setProducts] = useState([]);
-    const [selectedProducts, setSelectedProducts] =useState([]);
+    const [selectedProducts, setSelectedProducts] = useState([]);
     const [searchInput, setSearchInput] = useState("");
     const [modalID, setModalID] = useState();
-
 
 
     //fetching data
     useEffect(() => {
         getProducts().then((response) => {
-            const data = response.map(item=>({
-                checked : false,
+            const data = response.map(item => ({
+                checked: false,
                 ...item,
             }))
             setAllProducts(data);
@@ -34,13 +33,14 @@ function Catalog () {
     }, []);
     //Select items
     const handleSelect = (id) => {
-        if (selectedProducts.includes(id)){
+        if (selectedProducts.includes(id)) {
             const newSelect = selectedProducts.filter(selected => selected !== id)
             setSelectedProducts(newSelect)
         } else {
             setSelectedProducts([...selectedProducts, id]);
         }
     }
+
     const selectAll = () => {
         setSelectedProducts(products.map(selected => selected.id));
         products.map(item => item.checked = true)
@@ -58,7 +58,8 @@ function Catalog () {
         setTimeout(() => {
             const data = [...allProducts];
             const newProducts = data.filter(data => data.title.toLowerCase().includes(searchInput))
-            setProducts(newProducts)}, 500)
+            setProducts(newProducts)
+        }, 500)
     }, [searchInput])
 
     //modal
@@ -70,19 +71,19 @@ function Catalog () {
     return (
         <div>
             <Header
-            handleInput={handleInput}
-            searchInput={searchInput}
-            selectAll = {selectAll}
-            clearAll = {clearAll}
-            selectedProducts={selectedProducts}
+                handleInput={handleInput}
+                searchInput={searchInput}
+                selectAll={selectAll}
+                clearAll={clearAll}
+                selectedProducts={selectedProducts}
             />
             <Sort
-            Products={products}
-            setProducts={setProducts}
+                Products={products}
+                setProducts={setProducts}
             />
 
             <ModalMain
-                open = {handleClick}
+                open={handleClick}
                 modalID={modalID}
                 className={"Modal"}
             />
@@ -102,7 +103,7 @@ function Catalog () {
                                 checked={item.checked}
                                 handleSelect={handleSelect}
                                 selectedProducts={selectedProducts}
-                                handleClick = {handleClick}
+                                handleClick={handleClick}
                             />
                         ))}
                     </Grid>

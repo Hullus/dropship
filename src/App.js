@@ -1,13 +1,20 @@
 import './App.css';
 
 import Aside from "./Components/Aside/Aside";
-import Main from "./Components/Main/Main";
+import MainCatalog from "./Components/Catalog/Main";
+
+import {BrowserRouter, Route} from "react-router-dom";
 
 function App() {
   return (
     <div className="">
-      <Aside />
-      <Main />
+
+        <Aside />
+        <switch>
+            <Route path="/catalog">
+                <MainCatalog />
+            </Route>
+        </switch>
     </div>
   );
 }

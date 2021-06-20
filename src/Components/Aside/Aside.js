@@ -2,14 +2,39 @@ import './Aside.css';
 
 import logo from "../../Assets/icons/dropship__logo.png"
 import profile from "../../Assets/icons/profile.jpg"
-import dashboard from "../../Assets/icons/svgFiles/Dashboard.svg"
-import list from "../../Assets/icons/svgFiles/Catalog.svg"
-import inventory from "../../Assets/icons/svgFiles/Inventory.svg"
-import cart from "../../Assets/icons/svgFiles/Cart.svg"
+import CartIcon from "../../Assets/svg-icon/CartIcon"
+import InventoryIcon from "../../Assets/svg-icon/InventoryIcon";
+import OrdersIcon from "../../Assets/svg-icon/OrdersIcon";
+import StoreIcon from "../../Assets/svg-icon/StoreIcon";
+// import cart from "../../Assets/icons/svgFiles/CartIcon.svg"
 import checkList from "../../Assets/icons/svgFiles/Orders.svg"
 import transaction from "../../Assets/icons/svgFiles/Transactions.svg"
 import category from "../../Assets/icons/svgFiles/Store.svg"
+import {NavLink} from "react-router-dom";
 
+
+const asideIcons = [
+    {
+        Svg: CartIcon,
+        path: "cart",
+        className: 'Aside__nav__icon'
+    },
+    {
+        Svg:InventoryIcon,
+        path: "catalog",
+        className: 'Aside__nav__icon',
+    },
+    {
+        Svg:OrdersIcon,
+        path: "orders",
+        className: "Aside__nav__icon"
+    },
+    {
+        Svg: StoreIcon,
+        path: "store",
+        className: 'Aside__nav__icon'
+    }
+]
 
 function Aside() {
     return (
@@ -18,14 +43,12 @@ function Aside() {
                 <img src={logo} alt={"dropShip__logo"} className={"Aside__logo__icon"}/>
             </div>
             <div className={"Aside__nav"}>
-                <img src={profile} alt={"nav__item"} className={"Aside__nav__profile"}/>
-                <img src={dashboard} alt={"nav__item"} className={"Aside__nav__icon"}/>
-                <img src={list} alt={"nav__item"} className={"Aside__nav__icon"}/>
-                <img src={inventory} alt={"nav__item"} className={"Aside__nav__icon"}/>
-                <img src={cart} alt={"nav__item"} className={"Aside__nav__icon"}/>
-                <img src={checkList} alt={"nav__item"} className={"Aside__nav__icon"}/>
-                <img src={transaction} alt={"nav__item"} className={"Aside__nav__icon"}/>
-                <img src={category} alt={"nav__item"} className={"Aside__nav__icon"}/>
+                {
+                    asideIcons.map((item) => (
+                        <NavLink to={`/${item.path}`} activeClassName={'Icon__active'}>
+                            <item.Svg className={item.className} />
+                         </NavLink>
+                    ))}
             </div>
         </div>
     );

@@ -20,9 +20,22 @@
 }
 .Prices__list li{
     padding: 10px;
-    color: #616161;
+    max-width: 50px;
+    font-size: 14px;
     font-weight: 500;
 }
+.Price__number{
+    width: 100%;
+    font-size: 16px;
+    color: #393939;
+}
+.Price__text{
+    color: #616161;
+}
+.Price__text--blue{
+    color: #58c3cc;
+}
+
 .Product__image{
     width: calc(100% - 20px);
     margin: 0 10px 0 10px;
@@ -46,6 +59,7 @@
     -webkit-line-clamp: 2;
     line-height: 1rem;
     max-height: 2rem;
+    font-size: 13px;
 }
 .Product__supplier{
     max-width: 200px;

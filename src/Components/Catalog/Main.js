@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar/Sidebar";
 
 import {useState} from "react";
 
-function Main () {
+function MainCatalog () {
 
 
     return (
@@ -21,4 +21,4 @@ function Main () {
     );
 }
 
-export default Main;
+export default MainCatalog;

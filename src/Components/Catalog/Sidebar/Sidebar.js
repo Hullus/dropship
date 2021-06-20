@@ -2,7 +2,7 @@ import './Sidebar.css';
 
 import Arrow__icon from "../../../Assets/icons/arrow-204-64.png"
 
-function Sidebar () {
+function Sidebar() {
     return (
         <div className="Sidebar">
             <div className={"Sidebar__niche Sidebar__tab"}>
@@ -17,4 +17,4 @@ function Sidebar () {
     );
 }
 
-export  default Sidebar;
+export default Sidebar;

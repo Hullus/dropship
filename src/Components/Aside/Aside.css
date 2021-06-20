@@ -35,6 +35,8 @@
     height: 22px;
     width: 20px;
 }
-.Aside__nav__icon:hover{
-    fill: #61d5df;
+
+
+.Icon__active > svg > g > g > g  > g > g > path{
+    fill: #61d5df !important;
 }
