@@ -1,7 +1,7 @@
 import './Header.css';
 
 
-function Header({selectedProducts, handleInput, searchInput, selectAll, clearAll}) {
+function Header({selectedProducts, handleInput, searchInput, selectAll, clearAll, products}) {
 
 
     return (
@@ -15,7 +15,7 @@ function Header({selectedProducts, handleInput, searchInput, selectAll, clearAll
                         SELECT ALL
                     </button>
 
-                    <span className={"Nav__count"}>selected {selectedProducts.length} out of 20 products</span>
+                    <span className={"Nav__count"}>selected {selectedProducts.length} out of {products.length} products</span>
                     {selectedProducts.length > 0 && < button
                         className={"Nav__button Blue__button"}
                         onClick={clearAll}

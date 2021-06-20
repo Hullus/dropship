@@ -3,7 +3,7 @@ import './App.css';
 import Aside from "./Components/Aside/Aside";
 import MainCatalog from "./Components/Catalog/Main";
 
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 
 function App() {
   return (

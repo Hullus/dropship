@@ -76,6 +76,7 @@ function Catalog() {
                 selectAll={selectAll}
                 clearAll={clearAll}
                 selectedProducts={selectedProducts}
+                products={products}
             />
             <Sort
                 Products={products}
