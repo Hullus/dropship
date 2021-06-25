@@ -8,12 +8,13 @@ function Product({
                      image,
                      title,
                      price,
-                     description,
                      selected,
                      handleSelect,
                      selectedProducts,
                      checked,
-                     handleClick
+                     handleClick,
+                     cost,
+                     profit
                  }) {
 
 
@@ -49,9 +50,12 @@ function Product({
                 </div>
                 <div className={"Product__prices"}>
                     <ul className={"Prices__list"}>
-                        <li><span className={"Price__number"}>${price}  </span><span className={"Price__text"}>RRP</span></li>
-                        <li><span className={"Price__number"}>${Math.floor(Math.random() * 10) + 1}</span> <span className={"Price__text"}>COST</span></li>
-                        <li><span className={"Price__number"}>{Math.floor(Math.random() * 20) + 1}%</span> <span className={"Price__text--blue"}>PROFIT</span></li>
+                        <li><span className={"Price__number"}>${price}  </span><span
+                            className={"Price__text"}>RRP</span></li>
+                        <li><span className={"Price__number"}>${cost}</span> <span className={"Price__text"}>COST</span>
+                        </li>
+                        <li><span className={"Price__number"}>{profit}%</span> <span
+                            className={"Price__text--blue"}>PROFIT</span></li>
                     </ul>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import './Catalog.css';
 
 
 import {useEffect, useState} from "react";
-import {getProducts} from "./DataRetriver";
+import {getCategories, getProducts} from "./DataRetriver";
 
 import Product from "./Product/Product";
 import Header from "./Header/Header";
@@ -13,7 +13,6 @@ import ModalMain from "../Modal/Modal";
 
 function Catalog() {
 
-    const [allProducts, setAllProducts] = useState([]);
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [searchInput, setSearchInput] = useState("");
@@ -24,11 +23,19 @@ function Catalog() {
     useEffect(() => {
         getProducts().then((response) => {
             const data = response.map(item => ({
-                checked: false,
+                checked: null,
+                cost: (Math.floor(Math.random() * 10) + 1),
+                profit: (Math.floor(Math.random() * 20) + 1),
                 ...item,
             }))
-            setAllProducts(data);
             setProducts(data);
+            localStorage?.setItem("products", JSON.stringify(data));
+        });
+        getCategories().then((response) => {
+            const data = response.map(res => ({
+                ...res,
+            }))
+            localStorage?.setItem("categories", JSON.stringify(data));
         });
     }, []);
     //Select items
@@ -36,8 +43,14 @@ function Catalog() {
         if (selectedProducts.includes(id)) {
             const newSelect = selectedProducts.filter(selected => selected !== id)
             setSelectedProducts(newSelect)
+            products.map(item => {
+                if (item.id === id) item.checked = false
+            })
         } else {
             setSelectedProducts([...selectedProducts, id]);
+            products.map(item => {
+                if (item.id === id) item.checked = true
+            })
         }
     }
 
@@ -52,11 +65,10 @@ function Catalog() {
     //Search
     const handleInput = (e) => {
         setSearchInput(e.target.value)
-
     }
     useEffect(() => {
         setTimeout(() => {
-            const data = [...allProducts];
+            const data = [...JSON.parse(localStorage.getItem("products"))];
             const newProducts = data.filter(data => data.title.toLowerCase().includes(searchInput))
             setProducts(newProducts)
         }, 500)
@@ -100,6 +112,8 @@ function Catalog() {
                                 image={item.image}
                                 title={item.title}
                                 price={item.price}
+                                cost={item.cost}
+                                profit={item.profit}
                                 selected={item.selected}
                                 checked={item.checked}
                                 handleSelect={handleSelect}

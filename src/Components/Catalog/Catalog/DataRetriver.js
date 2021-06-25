@@ -10,4 +10,12 @@ export const getProducts = async () => {
     }
 }
 
-export default getProducts()
+export const getCategories = async () => {
+    try {
+        const { data } = await axios.get('https://fakestoreapi.com/products/categories')
+        return data
+    } catch (error) {
+        console.log(error)
+        return []
+    }
+}
